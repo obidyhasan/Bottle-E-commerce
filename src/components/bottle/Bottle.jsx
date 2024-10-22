@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
-function Bottle({ bottle }) {
-  console.log(bottle);
+function Bottle({ bottle, handelAddToCart }) {
   return (
     <div className="border rounded">
       <div className="w-full h-[250px] bg-card">
@@ -17,7 +16,10 @@ function Bottle({ bottle }) {
           <h2 className="font-semibold">{bottle.name}</h2>
           <p className="text-lg font-semibold mt-1">${bottle.price}</p>
         </div>
-        <button className="btn bg-primary btn-primary border-none btn-sm rounded text-white">
+        <button
+          onClick={() => handelAddToCart(bottle)}
+          className="btn bg-primary btn-primary border-none btn-sm rounded text-white"
+        >
           Add To Cart
         </button>
       </div>
@@ -27,6 +29,7 @@ function Bottle({ bottle }) {
 
 Bottle.propTypes = {
   bottle: PropTypes.object.isRequired,
+  handelAddToCart: PropTypes.func.isRequired,
 };
 
 export default Bottle;
